@@ -19,11 +19,13 @@ namespace Insfrastructure.Repository
         public  Task UpdateAsync(TEntity entity)
         {
             _context.Set<TEntity>().Update(entity);
+            return Task.CompletedTask; 
         }
 
         public  Task RemoveAsync(TEntity entity)
         {
             _context.Set<TEntity>().Remove(entity);
+            return Task.CompletedTask; 
         }
 
         public async Task<TEntity> GetByIdAsync(Guid id)
