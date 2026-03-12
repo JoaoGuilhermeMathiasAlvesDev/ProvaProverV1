@@ -39,7 +39,7 @@ namespace Aplication
 
             assinante.Ativa();
 
-            await _uow.AssinanteRepository.UpdateAsync(assinante);
+             _uow.AssinanteRepository.UpdateAsync(assinante);
             await _uow.CommitAsync();
         }
 
@@ -50,10 +50,9 @@ namespace Aplication
             if (assinante == null || !assinante.Status)
                 throw new Exception("Assinante não encontrado ou está inativo.");
 
-            // O método Editar já deve validar Nome e Valor internamente
             assinante.Editar(request.Nome, request.Plano, request.Valor);
 
-            await _uow.AssinanteRepository.UpdateAsync(assinante);
+             _uow.AssinanteRepository.UpdateAsync(assinante);
             await _uow.CommitAsync();
         }
 
@@ -64,7 +63,7 @@ namespace Aplication
 
             assinante.Desativa();
 
-            await _uow.AssinanteRepository.UpdateAsync(assinante);
+            _uow.AssinanteRepository.UpdateAsync(assinante);
             await _uow.CommitAsync();
         }
 

@@ -16,12 +16,12 @@ namespace Insfrastructure.Repository
             await _context.Set<TEntity>().AddAsync(entity);
         }
 
-        public async Task UpdateAsync(TEntity entity)
+        public  Task UpdateAsync(TEntity entity)
         {
             _context.Set<TEntity>().Update(entity);
         }
 
-        public async Task RemoveAsync(TEntity entity)
+        public  Task RemoveAsync(TEntity entity)
         {
             _context.Set<TEntity>().Remove(entity);
         }
