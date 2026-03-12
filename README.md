@@ -1,55 +1,29 @@
-🚀 Primeiros Passos - Sistema de Assinantes
-Este projeto utiliza .NET com Entity Framework Core. Siga as instruções abaixo para configurar o ambiente e rodar a aplicação.
+🚀 Como Rodar o Projeto
+1. Escolha sua Ferramenta
+Você precisará de uma IDE para rodar o código. Recomendo o Visual Studio 2022 ou o VS Code.
 
-🛠️ Pré-requisitos
-Antes de começar, você precisará escolher e instalar uma IDE para rodar o projeto:
-
-Visual Studio 2022 (Recomendado para Windows)
-
-VS Code (Com as extensões de C# instaladas)
-
-JetBrains Rider
-
-⚙️ 1. Configuração do Banco de Dados
-Para que o sistema funcione, você precisa apontar para o seu banco de dados local (SQL Server).
-
-No projeto principal, localize o arquivo appsettings.json.
-
-Altere a ConnectionString no campo DefaultConnection.
+2. Configure seu Banco de Dados
+Abra o arquivo appsettings.json e coloque o nome do seu servidor no campo DefaultConnection:
 
 JSON
-{
-  "ConnectionStrings": {
-    "DefaultConnection": "Server=SUA_INSTANCIA;Database=NomeDoSeuBanco;Trusted_Connection=True;TrustServerCertificate=True;"
-  }
-}
-Nota: Substitua SUA_INSTANCIA pelo nome do seu servidor (ex: localhost ou .\SQLEXPRESS).
+"DefaultConnection": "Server=COLOQUE_AQUI;Database=MeuBanco;Trusted_Connection=True;"
+3. Crie as Tabelas (Migrations)
+Com o projeto aberto, você precisa rodar o comando para o banco de dados ser criado automaticamente.
 
-📂 2. Rodando as Migrations
-Com a conexão configurada, você precisa criar as tabelas no banco de dados. Escolha o método dependendo da sua IDE:
-
-Via Visual Studio (Console do Gerenciador de Pacotes)
-Abra o console em Ferramentas > Gerenciador de Pacotes NuGet > Console do Gerenciador de Pacotes e digite:
+No Visual Studio: Abra o Console do Gerenciador de Pacotes e digite:
 
 PowerShell
 Update-Database
-Via Terminal (VS Code / CLI)
-Abra o terminal na pasta raiz do projeto e digite:
+No VS Code / Terminal: Digite:
 
 Bash
 dotnet ef database update
-🏃 3. Executando a Aplicação
-Certifique-se de que o projeto de inicialização (Startup Project) é o da camada de API ou Apresentation.
+4. Só dar o Play
+Agora é só apertar F5 ou clicar no botão de "Play" da sua IDE. O navegador vai abrir com o Swagger para você testar os endpoints.
 
-Pressione F5 ou use o comando:
+🛠️ O que foi usado:
+Linguagem: C# (.NET)
 
-Bash
-dotnet run
-O Swagger deverá abrir automaticamente no seu navegador.
+Banco: SQL Server
 
-💡 Dicas
-Se encontrar erro de "comando não encontrado" ao rodar dotnet ef, instale a ferramenta globalmente com:
-
-dotnet tool install --global dotnet-ef
-
-Verifique se o serviço do SQL Server está rodando antes de aplicar as migrations.
+ORM: Entity Framework Core
