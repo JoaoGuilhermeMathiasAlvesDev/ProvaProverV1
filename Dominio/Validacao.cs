@@ -10,10 +10,10 @@ namespace Dominio
     {
         public static void Validar(string nome, string email, double valor, DateTime dataInicio)
         {
-            ValidarNome(nome);
-            ValidarValor(valor);
-            ValidaDataInicio(dataInicio);
-            ValidarEmail(email);
+           ValidarNome(nome);
+           ValidarValor(valor);
+           ValidaDataInicio(dataInicio);
+           ValidarEmail(email);
         }
 
         public static void ValidarNome(string nome)

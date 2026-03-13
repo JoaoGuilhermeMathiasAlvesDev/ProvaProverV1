@@ -1,7 +1,7 @@
 ﻿using Aplication.IServices;
 using Aplication.model;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http; // Necessário para StatusCodes
+using Microsoft.AspNetCore.Http; 
 using System.Net.Mime;
 
 namespace Api.Controllers
@@ -54,7 +54,7 @@ namespace Api.Controllers
         /// <response code="201">Assinante cadastrado com sucesso.</response>
         /// <response code="400">Falha nas regras de negócio.</response>
         [HttpPost]
-        [ProducesResponseType(StatusCodes.Status201Created)] // Corrigido
+        [ProducesResponseType(StatusCodes.Status201Created)] 
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> Adicionar(AssinanteRequestModel request)
         {
@@ -73,14 +73,14 @@ namespace Api.Controllers
         /// Atualiza dados de um assinante (Somente se ele estiver ativo).
         /// </summary>
         [HttpPut("{id:guid}")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)] // Corrigido
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> Atualizar(Guid id, [FromBody] EditarAssinanteModel request)
         {
             try
             {
                 await _service.Atualizar(id, request);
-                return NoContent();
+                return StatusCode(201, new { mensagem = "Atualizado com sucesso!" });
             }
             catch (Exception ex)
             {
@@ -92,7 +92,7 @@ namespace Api.Controllers
         /// Desativa um assinante mudando seu status para Inativo.
         /// </summary>
         [HttpPatch("{id:guid}/desativar")]
-        [ProducesResponseType(StatusCodes.Status200OK)] // Corrigido
+        [ProducesResponseType(StatusCodes.Status200OK)] 
         public async Task<ActionResult> Desativar(Guid id)
         {
             try

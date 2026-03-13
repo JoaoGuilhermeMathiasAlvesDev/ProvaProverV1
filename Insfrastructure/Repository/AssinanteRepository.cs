@@ -25,7 +25,7 @@ namespace Insfrastructure.Repository
 
         public async Task<IEnumerable<Assinante>> ObterApenasAtivosAsync()
         {
-            return await _context.Assinantes.Where(a => a.Status == true).ToListAsync();
+            return await _context.Assinantes.Where(a => a.Status == true).AsNoTracking().ToListAsync();
         }
     }
 }
